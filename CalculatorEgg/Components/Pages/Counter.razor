@@ -1,0 +1,187 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<Row>
+	<Column ColumnSize="ColumnSize.Is12">
+		<Alert Color="Color.Primary" Visible>
+			<Field>
+				<FieldLabel>Read-Only</FieldLabel>
+				<TextEdit Text="@Value" ReadOnly />
+			</Field>
+		</Alert>
+	</Column>
+</Row>
+<Row>
+	<Column ColumnSize="ColumnSize.Is12">
+		<Alert Color="Color.Primary" Visible>
+			<Field>
+				<FieldLabel>Read-Only</FieldLabel>
+				<TextEdit Text="@Sum" ReadOnly />
+			</Field>
+		</Alert>
+	</Column>
+</Row>
+<Row>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Primary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "7")">7</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "8")">8</Button>
+
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "9")">9</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "*")">*</Button>
+		</Alert>
+	</Column>
+</Row>
+<Row>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Primary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "4")">4</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "5")">5</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "6")">6</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "-")">-</Button>
+		</Alert>
+	</Column>
+</Row>
+<Row>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Primary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "1")">1</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "2")">2</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "3")">3</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "+")">+</Button>
+		</Alert>
+	</Column>
+</Row>
+<Row>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Primary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "0")">0</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value += "/")">/</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary">.</Button>
+		</Alert>
+	</Column>
+	<Column ColumnSize="ColumnSize.Is3">
+		<Alert Color="Color.Secondary" Visible>
+			<Button Color="Color.Secondary" Clicked="@CalculateSum">=</Button>
+		</Alert>
+	</Column>
+</Row>
+<Row>
+	<Column ColumnSize="ColumnSize.Is12">
+		<Alert Color="Color.Primary" Visible>
+			<Button Color="Color.Secondary" Clicked="@(() => Value = null)">C</Button>
+		</Alert>
+	</Column>
+
+</Row>
+
+
+@code {
+	string? Value = string.Empty;
+
+	public string Value1 { get; set; }
+	public string  Value2 { get; set; }
+	public char? Operator { get; set; }
+
+	public string Sum { get; set; }
+
+	private Action<MouseEventArgs> NumberInput(int p0)
+	{
+		Value += p0.ToString();
+		return null;
+	}
+
+	private void CalculateSum(MouseEventArgs obj)
+	{
+
+		Value1 = string.Empty;
+		Value2 = string.Empty;
+		Operator = null;
+		Sum = string.Empty;
+
+		foreach (var c in Value)
+		{
+			if (char.IsDigit(c) )
+			{
+				if (Operator is null)
+				{
+					Value1 += c;
+				}
+				else
+				{
+					Value2 += c;
+				}
+				
+				
+			}
+			else
+			{
+				Operator = c;
+			}
+		}
+
+		switch (Operator)
+		{
+			case '+':
+				Sum = (int.Parse(Value1) + int.Parse(Value2)).ToString();
+				break;
+				case '-':
+				Sum = (int.Parse(Value1) - int.Parse(Value2)).ToString();
+				break;
+				case '*':
+				Sum = (int.Parse(Value1) * int.Parse(Value2)).ToString();
+				break;
+				case '/':
+				Sum = (int.Parse(Value1) / int.Parse(Value2)).ToString();
+				break;
+
+		}
+		
+	}
+
+}

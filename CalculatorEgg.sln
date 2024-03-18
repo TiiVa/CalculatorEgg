@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorEgg", "CalculatorEgg\CalculatorEgg.csproj", "{3344DCED-18EF-482D-9EC1-CBA8C19A5F16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3344DCED-18EF-482D-9EC1-CBA8C19A5F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3344DCED-18EF-482D-9EC1-CBA8C19A5F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3344DCED-18EF-482D-9EC1-CBA8C19A5F16}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3344DCED-18EF-482D-9EC1-CBA8C19A5F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3344DCED-18EF-482D-9EC1-CBA8C19A5F16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3344DCED-18EF-482D-9EC1-CBA8C19A5F16}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {113DF431-3B1A-472D-B804-C90B10CEBC3B}
+	EndGlobalSection
+EndGlobal
